@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>SeiKreativ</title>
+    <title>Web-Gui Team 1</title>
 </head>
 <body style="background-color:#A6FFB8;">
 <div>

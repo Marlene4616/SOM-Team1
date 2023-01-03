@@ -37,7 +37,7 @@ class GUI:
     def posted():
         return template('downloads')
 
-    # folgendes sagt bottle wo es alle Dateien die im Ordner Projekt1 gespeichert sind finden kann
+    # the following shows bottle where to find all the data what is saved in Projekt1
     @route('/static/<filename>')
     def server_static(filename):
         return static_file(filename, root='./')

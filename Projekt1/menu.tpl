@@ -1,10 +1,14 @@
 <html>
 <head>
-    <title>SeiKreativ</title>
+    <title>Web-Gui Team 1</title>
 </head>
 <body style="background-color:MediumSeaGreen;">
 <div align="middle">
-    <a href="/">Startseite</a> - <a href="/livedaten">Livedaten</a> - <a href="/temperatur">Temperatur</a> - <a href="/luftfeuchtigkeit">Luftfeuchtigkeit</a> - <a href="/downloads">Downloads</a>
+    <a href="/">Startseite</a> -
+    <a href="/livedaten">Livedaten</a> -
+    <a href="/temperatur">Temperatur</a> -
+    <a href="/luftfeuchtigkeit">Luftfeuchtigkeit</a> -
+    <a href="/downloads">Downloads</a>
 </div>
 <p>
 <h2>Willkommen auf der Startseite!
@@ -13,3 +17,5 @@
 
 </body>
 </html>
+
+
