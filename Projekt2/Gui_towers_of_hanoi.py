@@ -10,7 +10,8 @@ class GUI():
     stop_count = False
     winning_text ='winner!!!!!!! winner!!!!!!!!!! chicken dinner!!!!!!!!'
 
-    @classmethod #function can be unsed without creating an object of the class
+    # function can be used without creating an object of the class
+    @classmethod
     def setup(cls, width: int = 700, height: int = 500):
         """initializes the GUI variables
 
@@ -18,7 +19,7 @@ class GUI():
         :param height: set window height default = 500
         """
         cls.window = Tk() #creates a window
-        cls.window.title('Tower of Hanoi')
+        cls.window.title('Towers of Hanoi')
         cls.canvas = Canvas()  #creates the Canvas
         cls.status_text = Label()
         cls.canvas_width = width
