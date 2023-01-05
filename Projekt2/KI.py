@@ -1,8 +1,5 @@
-import random
-import time
-
+import random, time
 import numpy as np
-
 from N_towers_of_hanoi import Hanoi_towers
 from Gui_towers_of_hanoi import GUI
 

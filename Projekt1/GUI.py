@@ -27,8 +27,8 @@ class GUI:
             return "Keine Daten vorhanden. Bitte vergewissern Sie sich, das SensorDaten.py auf dem Raspberry läuft " \
                    "und das der Datei-Pfad und der Name der CSV Datei in SensorDaten.py und GUI.py identisch sind "
 
-    def background_server_function(self):
-        run(host=self.host, port=self.port, debug=True, reloader=True)
+    def start_server(self):
+        run(host=self.host, port=self.port, debug=False)
 
     @route('/')
     def menu():
@@ -57,7 +57,7 @@ class GUI:
         return template('livedaten', temp=data.temp, hum=data.hum, time=data.time.replace(microsecond=0))
 
     def run(self):
-        threading.Thread(target=self.background_server_function, daemon=True).start()
+        threading.Thread(target=self.start_server, daemon=True).start()
         while True:
             print('Server is active in background')
             time.sleep(3600)
