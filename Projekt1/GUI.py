@@ -18,13 +18,14 @@ class GUI:
         self.data_path = '/home/pi/som-gruppe_5/Projekt1/Data.csv'
         self.data_name = 'Data.csv'
 
-    def plot(self, data, ylabel):
-        if os.path.exists(self.data_name) == True:
-            df_hum = pd.read_csv(self.data_path)
-            plot_hum = px.line(x=df_hum['Datetime'], y=df_hum[data], labels=dict(x="", y=ylabel))
-            return plot_hum.to_html()
+    def plot(self, ydata, ylabel):
+        if os.path.exists(self.data_name):
+            data = pd.read_csv(self.data_path)
+            data_plot = px.line(x=data['Datetime'], y=data[ydata], labels=dict(x="", y=ylabel))
+            return data_plot.to_html()
         else:
-            return "Keine Daten vorhanden. Bitte vergewissern Sie sich, das SensorDaten.py auf dem Raspberry läuft und das der Datei-Pfad und der Name der CSV Datei in SensorDaten.py und GUI.py identisch sind "
+            return "Keine Daten vorhanden. Bitte vergewissern Sie sich, das SensorDaten.py auf dem Raspberry läuft " \
+                   "und das der Datei-Pfad und der Name der CSV Datei in SensorDaten.py und GUI.py identisch sind "
 
     def background_server_function(self):
         run(host=self.host, port=self.port, debug=True, reloader=True)
@@ -44,23 +45,23 @@ class GUI:
 
     @route('/luftfeuchtigkeit')
     def hum():
-        return template('luftfeuchtigkeit'), GUI.plot(GUI(),'Feuchtigkeit', "Luftfeuchtigkeit [%]")
+        return template('luftfeuchtigkeit'), GUI.plot(GUI(), 'Feuchtigkeit', "Luftfeuchtigkeit [%]")
 
     @route('/temperatur')
     def temp():
-        return template('temperatur'), GUI.plot(GUI(),'Temperatur', "Temperatur [°C]")
+        return template('temperatur'), GUI.plot(GUI(), 'Temperatur', "Temperatur [°C]")
 
     @route('/livedaten')
     def livedaten():
         data = SensorDaten()
         return template('livedaten', temp=data.temp, hum=data.hum, time=data.time.replace(microsecond=0))
 
-
     def run(self):
         threading.Thread(target=self.background_server_function, daemon=True).start()
         while True:
             print('Server is active in background')
             time.sleep(3600)
+
 
 if __name__ == '__main__':
     GUI.run(GUI())

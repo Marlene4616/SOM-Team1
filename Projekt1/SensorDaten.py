@@ -38,7 +38,7 @@ class SensorDaten:
         time_short=self.time.strftime("%d.%m.%Y  %H:%M:%S")
         return f"temp: {self.temp}hum: {self.hum}time: {time_short}"
 
-    def puplisher(self):
+    def publisher(self):
         if self.mqtt_switch == True:
             client = mqtt_client.Client(self.mqtt_user)
             client.connect(self.mqtt_adress, self.mqtt_port)
@@ -80,7 +80,7 @@ class SensorDaten:
     def run(self):
         print("SensorDaten is active")
         thread_2 = Thread(target=self.data_saver, daemon=True)
-        thread_1 = Thread(target=self.puplisher, daemon=True)
+        thread_1 = Thread(target=self.publisher, daemon=True)
         thread_1.start()
         thread_2.start()
         thread_1.join()
