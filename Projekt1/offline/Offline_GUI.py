@@ -109,5 +109,5 @@ class gui_python:
 '''====================== '''
 #                Call Class
 '''====================== '''
-x = gui_python()
+#x = gui_python()
 
