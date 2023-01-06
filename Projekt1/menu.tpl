@@ -11,8 +11,8 @@
     <a href="/downloads">Downloads</a>
 </div>
 <p>
-<h2>Willkommen auf der Startseite!
-</h2>
+<h1>Willkommen auf der Startseite!
+</h1>
 </p>
 
 </body>
