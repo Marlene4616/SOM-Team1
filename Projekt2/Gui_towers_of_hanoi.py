@@ -84,5 +84,5 @@ class GUI():
                 disc = cls.canvas.create_rectangle(x0, y0, x1, y1, fill=colours[disc_width - 1])
         # shows the pegs, ground and discs in the GUI window
         cls.canvas.pack()
-        # opens the GUI window
+        # updates the GUI window
         cls.window.update()
