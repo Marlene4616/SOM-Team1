@@ -8,10 +8,10 @@ import pandas as pd
 class GUI:
     def __init__(self):
         # Data properties
-        self.data_path = 'D:\Studium\7_Semester\SOM\SOM-Team1\Projekt1\Data.csv'
+        self.data_path = 'D:\\Studium\\7_Semester\\SOM\\SOM-Team1\\Projekt1\\Data.csv'
         self.data_name = 'Data.csv'
     def plot(self, data, ylabel):
-        if os.path.exists(self.data_name) == True:
+        if os.path.exists(self.data_name):
             df_hum = pd.read_csv(self.data_path)
             plot_hum = px.line(x=df_hum['Datetime'], y=df_hum[data], labels=dict(x="", y=ylabel))
             return plot_hum.to_html()
@@ -32,11 +32,11 @@ class GUI:
 
     @route('/temperatur')
     def temperatur():
-        return template('temperatur')
+        return template('temperatur'), GUI.plot(GUI(), 'Temperatur', "Temperatur [°C]")
 
     @route('/luftfeuchtigkeit')
     def humidity():
-        return template('luftfeuchtigkeit')
+        return template('luftfeuchtigkeit'), GUI.plot(GUI(), 'Feuchtigkeit', "Luftfeuchtigkeit [%]")
 
     @route('/livedaten')
     def livedaten():
