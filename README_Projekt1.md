@@ -16,8 +16,11 @@ sowie die durchschnittliche Temperatur und Luftfeuchtigkeit ermittelt. Über ein
 >
 >Das Programm ist aus folgenden Dateien zusammengesetzt:
 >* SensorDaten.py
->* Offline_GUI.py
 >* GUI.py
+>* Start.py
+>* Stop.py
+>* Offline_GUI.py
+>* live_data2.py
 >
 >Die Formatierung der Web-Gui wird durch die folgenden Templates realisiert:
 >* menu.tpl
@@ -95,22 +98,18 @@ Alle Bibliotheken müssen auf dem Raspberry Pi installiert werden.
 >cd som-gruppe_5/Projekt1
 >```
 >```bash
->git pull
+>git clone <git-link>
 >```
 >* abc-Kennung und Passwort eingeben
 >
->* stoppen des laufenden Programmes
+>* Starten des Programmes
 >```bash
->pkill -9 -f GUI.py
+>python Start.py
 >```
->* Testen ob Web-GUI noch ausgeführt wird
+>* Stoppen des Programmes
 >```bash
->ps -ef|grep GUI.py
->```
->* Starten der Web-GUI
->```bash
->nohup python GUI.py
->```
+>python Stop.py
+
 
 > ### Web-GUI
 > 
@@ -120,4 +119,6 @@ Alle Bibliotheken müssen auf dem Raspberry Pi installiert werden.
 > Zum Beispiel ist die Anzeige der Temperatur, Luftfeuchtigkeit oder Download der gesammelten Messwerte als .csv Datei möglich.
 
 > ### GUI
-> Ausführen der "Offline_GUI.py"
+> * Ausführen der "Offline_GUI.py"
+> * Die auszulesende CSV-Datei auswählen
+> 
