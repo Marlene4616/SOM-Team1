@@ -8,13 +8,14 @@ class KI:
 
     def __init__(self, NN):
         self.env = Hanoi_towers(NN, False)
-        self.NN = NN
+        self.NN = NN  # Number of discs
 
-    def q_learning(self, total_epochs=1001, reset=False):
+    def q_learning(self, total_epochs=1001, reset=True):
         start_time = time.time()
 
         self.env.view_output = False
 
+        # open existing Q-table or create a new one
         if not reset:
             q_table = np.loadtxt(f"Q_table_{self.NN}.txt")
         else:
@@ -22,7 +23,7 @@ class KI:
             print("Q-table is reset")
 
         alpha = 0.1  # learning rate:
-        gamma = 0.6  # dicount factor: determines how much importance we want to give to future rewards
+        gamma = 0.6  # discount factor: determines how much importance we want to give to future rewards
         epsilon = 0.1
 
         epochs_before = 0
@@ -54,11 +55,12 @@ class KI:
                 state = next_state
                 epochs += 1
 
+            # Calculate progress
             if round(i * 100 / total_epochs) == epochs_before + 10:
                 print(round(i * 100 / total_epochs), "%")
                 epochs_before = round(i * 100 / total_epochs)
 
-        execution_time = time.time()-start_time
+        execution_time = time.time() - start_time
 
         print(f"Penalties: {penalties}")
         print(f"Training finished in {execution_time} seconds.\n")
@@ -85,13 +87,13 @@ class KI:
             time.sleep(1)
 
         print(f"Finished in {n} moves!\n")
-        print(f"Optimal number of moves:{2**self.NN-1}")
+        print(f"Optimal number of moves:{2 ** self.NN - 1}")
 
 
 # Start der KI
-GUI.setup(width=600, height=200)    # window size can be set manually but can also stay empty
-test = KI(6)                        # Number of discs
+GUI.setup(width=600, height=200)  # window size can be set manually but can also stay empty
+test = KI(7)  # Number of discs
 
-test.q_learning(10001, True)  # Number of epochs, True = new q-table & False = reuse existing q-table
+test.q_learning(1001, True)  # Number of epochs, True = new q-table & False = reuse existing q-table
 test.show_result()
-GUI.window.mainloop()   # GUI bleibt offen, nachdem alles durchgelaufen ist
+GUI.window.mainloop()  # GUI bleibt offen, nachdem alles durchgelaufen ist

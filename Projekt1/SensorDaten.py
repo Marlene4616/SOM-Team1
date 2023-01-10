@@ -39,6 +39,7 @@ class SensorDaten:
         time_short = self.time.strftime("%d.%m.%Y  %H:%M:%S")
         return f"temp: {self.temp}hum: {self.hum}time: {time_short}"
 
+    # The publisher Method, publish the Data on the MQTT-Server
     def publisher(self):
         if self.mqtt_switch:
             client = mqtt_client.Client(self.mqtt_user)
@@ -55,6 +56,7 @@ class SensorDaten:
                 else:
                     time.sleep(self.freq_mqtt)
 
+    # The data_saver Method, save the Data in a CSV-file
     def data_saver(self):
         if self.csv_switch:
             while True:
