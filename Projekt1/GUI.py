@@ -19,7 +19,7 @@ class GUI:
         self.data_name = 'Data.csv'
 
     def plot(self, ydata, ylabel):
-        if os.path.exists(self.data_name):
+        if os.path.exists(self.data_path):
             data = pd.read_csv(self.data_path)
             data_plot = px.line(x=data['Datetime'], y=data[ydata], labels=dict(x="", y=ylabel))
             return data_plot.to_html()
