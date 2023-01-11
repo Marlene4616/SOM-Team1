@@ -92,8 +92,8 @@ class KI:
 
 # Start der KI
 GUI.setup(width=600, height=200)  # window size can be set manually but can also stay empty
-test = KI(7)  # Number of discs
+test = KI(6)  # Number of discs
 
-test.q_learning(1001, True)  # Number of epochs, True = new q-table & False = reuse existing q-table
+test.q_learning(1001, False)  # Number of epochs, True = new q-table & False = reuse existing q-table
 test.show_result()
 GUI.window.mainloop()  # GUI bleibt offen, nachdem alles durchgelaufen ist
