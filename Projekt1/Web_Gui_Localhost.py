@@ -11,7 +11,7 @@ class GUI:
         self.data_path = 'D:\\Studium\\7_Semester\\SOM\\SOM-Team1\\Projekt1\\Data.csv'
         self.data_name = 'Data.csv'
     def plot(self, data, ylabel):
-        if os.path.exists(self.data_name):
+        if os.path.exists(self.data_path):
             df_hum = pd.read_csv(self.data_path)
             plot_hum = px.line(x=df_hum['Datetime'], y=df_hum[data], labels=dict(x="", y=ylabel))
             return plot_hum.to_html()
