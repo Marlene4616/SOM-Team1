@@ -31,7 +31,7 @@ class hanoi:
         while True:
             self.move()
             if self.tower_C == self.tower_start:
-                print('#########\n')
+                print('#########')
                 print('You Won!')
                 print('#########\n')
                 break
@@ -47,8 +47,7 @@ class hanoi:
 
         if rule_check:
              to.append(frm.pop())
-        else:
-            self.print_error('Wrong move')
+
 
     def check_rules(self,frm, to):
 
@@ -109,6 +108,8 @@ class hanoi:
 
     def check_input(self, inp):
         rod = ['A', 'B', 'C']
+        if inp == 'esc':
+            exit()
 
         if inp in rod:
             return True
